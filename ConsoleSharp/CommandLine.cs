@@ -9,6 +9,10 @@ public static class CommandLine {
             () => settings.Delay,
             "An example number input"
         );
+        delayOption.AddValidator(result => {
+            if (result.GetValueOrDefault<int>() < 0)
+                result.ErrorMessage = "The delay value can not less than 0";
+        });
 
         var rootCommand = new RootCommand("My C# Console App with Command-Line Parsing") {
             delayOption
