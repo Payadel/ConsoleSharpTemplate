@@ -1,7 +1,32 @@
-﻿namespace ConsoleSharpTemplate;
+﻿using ConsoleSharpTemplate.Services;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Configuration;
 
-class Program {
-    static void Main(string[] args) {
-        Console.WriteLine("Hello, World!");
-    }
+var services = new ServiceCollection();
+
+// Add logging
+services.AddLogging(builder => builder.AddConsole());
+
+// Add configuration
+var configuration = new ConfigurationBuilder()
+    .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+    .Build();
+services.AddSingleton<IConfiguration>(configuration);
+
+// Add application services
+services.AddTransient<ExampleService>();
+
+// -----------------------------------------------------------------
+await using var serviceProvider = services.BuildServiceProvider();
+
+var logger = serviceProvider.GetRequiredService<ILogger<Program>>();
+logger.LogInformation("Application Starting...");
+
+try {
+    var exampleService = serviceProvider.GetRequiredService<ExampleService>();
+    await exampleService.Run();
+}
+catch (Exception ex) {
+    logger.LogError(ex, "An error occurred.");
 }

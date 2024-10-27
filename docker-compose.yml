@@ -1,6 +1,8 @@
 ﻿services:
-  consolesharptemplate:
-    image: consolesharptemplate
+  console-sharp:
+    image: console-sharp
     build:
       context: .
-      dockerfile: ConsoleSharpTemplate/Dockerfile
+      dockerfile: Dockerfile
+    volumes:
+      - ./ConsoleSharp/appsettings.json:/app/appsettings.json
