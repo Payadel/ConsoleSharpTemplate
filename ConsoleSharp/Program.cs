@@ -1,4 +1,5 @@
-﻿using ConsoleSharpTemplate.Services;
+﻿using ConsoleSharpTemplate;
+using ConsoleSharpTemplate.Services;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Configuration;
@@ -13,6 +14,9 @@ var configuration = new ConfigurationBuilder()
     .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
     .Build();
 services.AddSingleton<IConfiguration>(configuration);
+
+var appSettings = configuration.GetSection("App").Get<AppSettings>() ?? throw new ArgumentException("Can not load app settings data.");
+services.AddSingleton(appSettings);
 
 // Add application services
 services.AddTransient<ExampleService>();

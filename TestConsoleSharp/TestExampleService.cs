@@ -1,3 +1,4 @@
+using ConsoleSharpTemplate;
 using ConsoleSharpTemplate.Services;
 using Microsoft.Extensions.Logging;
 using Moq;
@@ -9,8 +10,11 @@ public class TestExampleService {
     public async Task Run_LogsExpectedMessages() {
         // Arrange
         var mockLogger = new Mock<ILogger<ExampleService>>();
+        var appSettings = new AppSettings {
+            Delay = 0
+        };
 
-        var service = new ExampleService(mockLogger.Object);
+        var service = new ExampleService(mockLogger.Object, appSettings);
 
         // Act
         await service.Run();
@@ -20,7 +24,7 @@ public class TestExampleService {
             x => x.Log(
                 LogLevel.Information,
                 It.IsAny<EventId>(),
-                It.Is<It.IsAnyType>((v, t) => v.ToString() == "ExampleService is running."),
+                It.Is<It.IsAnyType>((v, t) => v.ToString() == $"ExampleService is running. Delay: {appSettings.Delay}"),
                 It.IsAny<Exception>(),
                 ((Func<It.IsAnyType, Exception, string>)It.IsAny<object>())!),
             Times.Once);
