@@ -15,8 +15,12 @@ var configuration = new ConfigurationBuilder()
     .Build();
 services.AddSingleton<IConfiguration>(configuration);
 
-var appSettings = configuration.GetSection("App").Get<AppSettings>() ?? throw new ArgumentException("Can not load app settings data.");
+var appSettings = configuration.GetSection("App")
+    .Get<AppSettings>() ?? throw new ArgumentException("Can not load app settings data.");
 services.AddSingleton(appSettings);
+
+// Parse inputs and update the appSettings
+await CommandLine.InvokeAsync(args, appSettings);
 
 // Add application services
 services.AddTransient<ExampleService>();

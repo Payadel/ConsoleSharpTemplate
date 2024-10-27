@@ -1,5 +1,5 @@
 namespace ConsoleSharpTemplate;
 
 public class AppSettings {
-    public int Delay { get; init; }
+    public int Delay { get; set; }
 }
