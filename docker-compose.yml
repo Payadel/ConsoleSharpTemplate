@@ -1,0 +1,6 @@
+﻿services:
+  consolesharptemplate:
+    image: consolesharptemplate
+    build:
+      context: .
+      dockerfile: ConsoleSharpTemplate/Dockerfile
