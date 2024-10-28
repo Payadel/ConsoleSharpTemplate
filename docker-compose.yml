@@ -1,16 +1,9 @@
 ﻿services:
-  app:
-    image: readme-generator:latest
+  console-sharp:
+    image: console-sharp
     build:
       context: .
       dockerfile: Dockerfile
     volumes:
-      - ../.git:/app/data/.git
-      - ../Solutions:/app/data/Solutions
-      - ./ReadmeGenerator/appsettings.json:/appsettings.json
-      - ../README.md:/app/data/README.md:rw
-      - ./ReadmeGenerator/data/ReadmeTemplate.md:/app/data/ReadmeTemplate.md
-      - ../docs/CompleteList.md:/app/data/CompleteList.md:rw
-      - ./ReadmeGenerator/data/CompleteListTemplate.md:/app/data/CompleteListTemplate.md:rw
-    entrypoint: ["dotnet", "ReadmeGenerator.dll"]
-    # command: ["-w", "Data/"]
+      - ./ConsoleSharp/appsettings.json:/app/appsettings.json
+      - ./app.db:/app/app.db
