@@ -1,6 +1,7 @@
 ﻿using ConsoleSharpTemplate;
 using ConsoleSharpTemplate.Data;
-using ConsoleSharpTemplate.Services;
+using ConsoleSharpTemplate.Helpers.FileService;
+using ConsoleSharpTemplate.Settings;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -28,10 +29,10 @@ services.AddDbContext<AppDbContext>(options =>
     options.UseSqlite(configuration.GetConnectionString("Default")));
 
 // Parse inputs and update the appSettings
-await CommandLine.InvokeAsync(args, appSettings);
+await CommandLine.InvokeAsync(args, appSettings, new FileService());
 
 // Add application services
-services.AddTransient<ExampleService>();
+services.AddTransient<App>();
 
 // -----------------------------------------------------------------
 await using var serviceProvider = services.BuildServiceProvider();
@@ -44,7 +45,7 @@ var db = serviceProvider.GetRequiredService<AppDbContext>();
 await db.Database.EnsureCreatedAsync();
 
 try {
-    var exampleService = serviceProvider.GetRequiredService<ExampleService>();
+    var exampleService = serviceProvider.GetRequiredService<App>();
     await exampleService.Run();
 }
 catch (Exception ex) {
