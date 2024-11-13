@@ -13,6 +13,10 @@ var services = new ServiceCollection();
 var configuration = new ConfigurationBuilder()
     .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
     .Build();
+
+
+
+
 services.AddSingleton<IConfiguration>(configuration);
 
 // Add logging using configuration
