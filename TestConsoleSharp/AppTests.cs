@@ -1,20 +1,19 @@
 using ConsoleSharpTemplate;
-using ConsoleSharpTemplate.Services;
 using Microsoft.Extensions.Logging;
 using Moq;
 
 namespace TestConsoleSharp;
 
-public class TestExampleService {
+public class AppTests {
     [Fact]
     public async Task Run_LogsExpectedMessages() {
         // Arrange
-        var mockLogger = new Mock<ILogger<ExampleService>>();
+        var mockLogger = new Mock<ILogger<App>>();
         var appSettings = new AppSettings {
             Delay = 0
         };
 
-        var service = new ExampleService(mockLogger.Object, appSettings);
+        var service = new App(mockLogger.Object, appSettings);
 
         // Act
         await service.Run();
@@ -24,7 +23,7 @@ public class TestExampleService {
             x => x.Log(
                 LogLevel.Information,
                 It.IsAny<EventId>(),
-                It.Is<It.IsAnyType>((v, t) => v.ToString() == $"ExampleService is running. Delay: {appSettings.Delay}"),
+                It.Is<It.IsAnyType>((v, t) => v.ToString() == $"App is running. Delay: {appSettings.Delay}"),
                 It.IsAny<Exception>(),
                 ((Func<It.IsAnyType, Exception, string>)It.IsAny<object>())!),
             Times.Once);
@@ -33,7 +32,7 @@ public class TestExampleService {
             x => x.Log(
                 LogLevel.Information,
                 It.IsAny<EventId>(),
-                It.Is<It.IsAnyType>((v, t) => v.ToString() == "ExampleService completed."),
+                It.Is<It.IsAnyType>((v, t) => v.ToString() == "App completed."),
                 It.IsAny<Exception>(),
                 ((Func<It.IsAnyType, Exception, string>)It.IsAny<object>())!),
             Times.Once);

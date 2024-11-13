@@ -1,7 +1,6 @@
 ﻿using ConsoleSharpTemplate;
 using ConsoleSharpTemplate.Data;
 using ConsoleSharpTemplate.Helpers.FileService;
-using ConsoleSharpTemplate.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -32,7 +31,7 @@ services.AddDbContext<AppDbContext>(options =>
 await CommandLine.InvokeAsync(args, appSettings, new FileService());
 
 // Add application services
-services.AddTransient<ExampleService>();
+services.AddTransient<App>();
 
 // -----------------------------------------------------------------
 await using var serviceProvider = services.BuildServiceProvider();
@@ -45,7 +44,7 @@ var db = serviceProvider.GetRequiredService<AppDbContext>();
 await db.Database.EnsureCreatedAsync();
 
 try {
-    var exampleService = serviceProvider.GetRequiredService<ExampleService>();
+    var exampleService = serviceProvider.GetRequiredService<App>();
     await exampleService.Run();
 }
 catch (Exception ex) {
