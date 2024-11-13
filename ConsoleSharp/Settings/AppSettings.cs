@@ -1,4 +1,4 @@
-namespace ConsoleSharpTemplate;
+namespace ConsoleSharpTemplate.Settings;
 
 public class AppSettings {
     public int Delay { get; set; }

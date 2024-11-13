@@ -1,5 +1,6 @@
 using System.CommandLine;
 using ConsoleSharpTemplate.Helpers.FileService;
+using ConsoleSharpTemplate.Settings;
 
 namespace ConsoleSharpTemplate;
 

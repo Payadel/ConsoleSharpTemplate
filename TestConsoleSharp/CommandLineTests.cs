@@ -1,4 +1,5 @@
 using ConsoleSharpTemplate;
+using ConsoleSharpTemplate.Settings;
 using TestConsoleSharp.Mocks;
 
 namespace TestConsoleSharp;

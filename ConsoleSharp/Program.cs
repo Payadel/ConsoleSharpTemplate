@@ -1,6 +1,7 @@
 ﻿using ConsoleSharpTemplate;
 using ConsoleSharpTemplate.Data;
 using ConsoleSharpTemplate.Helpers.FileService;
+using ConsoleSharpTemplate.Settings;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;

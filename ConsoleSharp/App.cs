@@ -1,3 +1,4 @@
+using ConsoleSharpTemplate.Settings;
 using Microsoft.Extensions.Logging;
 
 namespace ConsoleSharpTemplate;
