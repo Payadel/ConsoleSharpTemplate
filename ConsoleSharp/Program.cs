@@ -17,6 +17,9 @@ var configuration = new ConfigurationBuilder()
 
 
 
+
+
+
 services.AddSingleton<IConfiguration>(configuration);
 
 // Add logging using configuration
