@@ -1,6 +1,6 @@
-﻿using ConsoleSharpTemplate;
+﻿using System.IO.Abstractions;
+using ConsoleSharpTemplate;
 using ConsoleSharpTemplate.Data;
-using ConsoleSharpTemplate.Helpers.FileService;
 using ConsoleSharpTemplate.Settings;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
@@ -29,7 +29,7 @@ services.AddDbContext<AppDbContext>(options =>
     options.UseSqlite(configuration.GetConnectionString("Default")));
 
 // Parse inputs and update the appSettings
-await CommandLine.InvokeAsync(args, appSettings, new FileService());
+await CommandLine.InvokeAsync(args, appSettings, new FileSystem());
 
 // Add application services
 services.AddTransient<App>();

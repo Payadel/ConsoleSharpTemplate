@@ -1,11 +1,11 @@
 using System.CommandLine;
-using ConsoleSharpTemplate.Helpers.FileService;
+using System.IO.Abstractions;
 using ConsoleSharpTemplate.Settings;
 
 namespace ConsoleSharpTemplate;
 
 public static class CommandLine {
-    public static Task<int> InvokeAsync(string[] args, AppSettings settings, IFileService fileService) {
+    public static Task<int> InvokeAsync(string[] args, AppSettings settings, IFileSystem fileSystem) {
         var delayOption = new Option<int>(
             ["-d", "--delay"],
             () => settings.Delay,
@@ -25,7 +25,7 @@ public static class CommandLine {
             var value = result.GetValueOrDefault<string>();
             if (string.IsNullOrWhiteSpace(value))
                 result.ErrorMessage = "The file is required.";
-            else if (!fileService.Exists(value))
+            else if (!fileSystem.File.Exists(value))
                 result.ErrorMessage = "The file is not valid.";
         });
 
