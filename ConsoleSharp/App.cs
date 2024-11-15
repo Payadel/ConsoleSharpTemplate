@@ -17,6 +17,7 @@ public class App(ILogger<App> logger, AppSettings settings) {
     }
 
     private void EnsureInputsAreValid() {
-        throw new NotImplementedException();
+        if (settings.Delay < 0)
+            throw new ArgumentException($"{nameof(settings.Delay)} can not less that 0.");
     }
 }
