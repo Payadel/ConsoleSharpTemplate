@@ -46,7 +46,7 @@ await db.Database.EnsureCreatedAsync();
 
 try {
     var exampleService = serviceProvider.GetRequiredService<App>();
-    await exampleService.Run();
+    await exampleService.RunAsync();
 }
 catch (Exception ex) {
     logger.LogError(ex, "An error occurred.");

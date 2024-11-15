@@ -17,7 +17,7 @@ public class AppTests {
         var service = new App(mockLogger.Object, appSettings);
 
         // Act
-        await service.Run();
+        await service.RunAsync();
 
         // Assert
         mockLogger.Verify(
@@ -37,5 +37,16 @@ public class AppTests {
                 It.IsAny<Exception>(),
                 ((Func<It.IsAnyType, Exception, string>)It.IsAny<object>())!),
             Times.Once);
+    }
+
+    [Fact]
+    public void Run_GiveInvalidInput_ThrowsArgumentException() {
+        var mockLogger = new Mock<ILogger<App>>();
+        var appSettings = new AppSettings {
+            Delay = -10
+        };
+        var service = new App(mockLogger.Object, appSettings);
+
+        Assert.ThrowsAsync<ArgumentException>(() => service.RunAsync());
     }
 }
