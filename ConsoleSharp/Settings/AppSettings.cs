@@ -5,6 +5,7 @@ namespace ConsoleSharpTemplate.Settings;
 
 public class AppSettings {
     public int Delay { get; set; }
+    public string Output { get; set; } = default!;
     [SecureConfig] public string SampleFile { get; set; } = default!;
 
     public override string ToString() {

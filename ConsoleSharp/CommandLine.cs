@@ -1,5 +1,6 @@
 using System.CommandLine;
 using System.IO.Abstractions;
+using ConsoleSharpTemplate.Helpers;
 using ConsoleSharpTemplate.Settings;
 
 namespace ConsoleSharpTemplate;
@@ -14,6 +15,24 @@ public static class CommandLine {
         delayOption.AddValidator(result => {
             if (result.GetValueOrDefault<int>() < 0)
                 result.ErrorMessage = "The delay value can not less than 0";
+        });
+
+        var outputOption = new Option<string>(
+            ["-o", "--output"],
+            () => settings.Output,
+            "Output Path"
+        );
+        outputOption.AddValidator(result => {
+            var value = result.GetValueOrDefault<string>();
+            if (string.IsNullOrWhiteSpace(value))
+                result.ErrorMessage = "The output value is required.";
+            else if (File.Exists(value))
+                result.ErrorMessage = "Output value is not valid.";
+            else if (!fileSystem.Directory.Exists(value)) {
+                var error = TryHelpers.Try(() => fileSystem.Directory.CreateDirectory(value));
+                if (!string.IsNullOrWhiteSpace(error))
+                    result.ErrorMessage = error;
+            }
         });
 
         var fileOption = new Option<string>(
@@ -31,13 +50,15 @@ public static class CommandLine {
 
         var rootCommand = new RootCommand("My C# Console App with Command-Line Parsing") {
             delayOption,
+            outputOption,
             fileOption
         };
 
-        rootCommand.SetHandler((delay, file) => {
+        rootCommand.SetHandler((delay, output, file) => {
             settings.Delay = delay;
+            settings.Output = output;
             settings.SampleFile = file;
-        }, delayOption, fileOption);
+        }, delayOption, outputOption, fileOption);
 
         // Invoke the command
         return rootCommand.InvokeAsync(args);
