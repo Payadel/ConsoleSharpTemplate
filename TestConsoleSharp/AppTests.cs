@@ -40,13 +40,13 @@ public class AppTests {
     }
 
     [Fact]
-    public void Run_GiveInvalidInput_ThrowsArgumentException() {
+    public async Task Run_GiveInvalidInput_ThrowsArgumentException() {
         var mockLogger = new Mock<ILogger<App>>();
         var appSettings = new AppSettings {
             Delay = -10
         };
         var service = new App(mockLogger.Object, appSettings);
 
-        Assert.ThrowsAsync<ArgumentException>(() => service.RunAsync());
+        await Assert.ThrowsAsync<ArgumentException>(() => service.RunAsync());
     }
 }
