@@ -6,6 +6,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	ProjectSection(SolutionItems) = preProject
 		docker-compose.yml = docker-compose.yml
 		Dockerfile = Dockerfile
+		scripts\pack.sh = scripts\pack.sh
+		scripts\run.sh = scripts\run.sh
+		scripts\publish.sh = scripts\publish.sh
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestConsoleSharp", "TestConsoleSharp\TestConsoleSharp.csproj", "{209BD9ED-A9CF-4F49-9BA5-5F95DA61D3C7}"
