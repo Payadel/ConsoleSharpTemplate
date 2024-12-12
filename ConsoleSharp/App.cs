@@ -1,7 +1,7 @@
-using ConsoleSharpTemplate.Settings;
+using ConsoleSharp.Settings;
 using Microsoft.Extensions.Logging;
 
-namespace ConsoleSharpTemplate;
+namespace ConsoleSharp;
 
 public class App(ILogger<App> logger, AppSettings settings) {
     public async Task RunAsync() {

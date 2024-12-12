@@ -1,7 +1,7 @@
 using System.Reflection;
 using System.Text;
 
-namespace ConsoleSharpTemplate.Settings;
+namespace ConsoleSharp.Settings;
 
 public class AppSettings {
     public int Delay { get; set; }

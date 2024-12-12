@@ -1,4 +1,4 @@
-using ConsoleSharpTemplate.Helpers;
+using ConsoleSharp.Helpers;
 
 namespace TestConsoleSharp.Helpers;
 

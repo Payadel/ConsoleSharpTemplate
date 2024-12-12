@@ -1,6 +1,6 @@
 using System.IO.Abstractions.TestingHelpers;
-using ConsoleSharpTemplate;
-using ConsoleSharpTemplate.Settings;
+using ConsoleSharp;
+using ConsoleSharp.Settings;
 
 namespace TestConsoleSharp;
 
