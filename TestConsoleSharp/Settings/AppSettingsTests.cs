@@ -1,4 +1,4 @@
-using ConsoleSharpTemplate.Settings;
+using ConsoleSharp.Settings;
 
 namespace TestConsoleSharp.Settings;
 

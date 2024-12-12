@@ -46,7 +46,7 @@ jobs:
           NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
         run: |
           VERSION="${{ needs.release-please.outputs.major }}.${{ needs.release-please.outputs.minor }}.${{ needs.release-please.outputs.patch }}"
-          dotnet pack src/OnRails/OnRails.csproj --configuration Release /p:PackageVersion=$VERSION
-          dotnet nuget push "src/OnRails/bin/Release/**/*.nupkg" \
+          dotnet pack ConsoleSharp/ConsoleSharp.csproj --configuration Release /p:PackageVersion=$VERSION
+          dotnet nuget push "ConsoleSharp/bin/Release/**/*.nupkg" \
             --source https://api.nuget.org/v3/index.json \
             --api-key "$NUGET_API_KEY"

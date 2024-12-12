@@ -1,5 +1,5 @@
-using ConsoleSharpTemplate;
-using ConsoleSharpTemplate.Settings;
+using ConsoleSharp;
+using ConsoleSharp.Settings;
 using Microsoft.Extensions.Logging;
 using Moq;
 

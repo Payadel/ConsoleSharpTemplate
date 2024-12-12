@@ -1,7 +1,7 @@
 using System.IO.Abstractions;
-using ConsoleSharpTemplate;
-using ConsoleSharpTemplate.Data;
-using ConsoleSharpTemplate.Settings;
+using ConsoleSharp;
+using ConsoleSharp.Data;
+using ConsoleSharp.Settings;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;

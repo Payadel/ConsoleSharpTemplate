@@ -1,4 +1,4 @@
-namespace ConsoleSharpTemplate.Helpers;
+namespace ConsoleSharp.Helpers;
 
 public static class TryHelpers {
     /// <summary>

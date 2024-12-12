@@ -1,9 +1,9 @@
 using System.CommandLine;
 using System.IO.Abstractions;
-using ConsoleSharpTemplate.Helpers;
-using ConsoleSharpTemplate.Settings;
+using ConsoleSharp.Helpers;
+using ConsoleSharp.Settings;
 
-namespace ConsoleSharpTemplate;
+namespace ConsoleSharp;
 
 public static class CommandLine {
     public static Task<int> InvokeAsync(string[] args, AppSettings settings, IFileSystem fileSystem) {
