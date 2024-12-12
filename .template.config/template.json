@@ -1,0 +1,16 @@
+{
+  "author": "Payadel",
+  "classifications": [
+    "C#",
+    "Console"
+  ],
+  "identity": "consolesharp",
+  "name": "ConsoleSharp",
+  "shortName": "consolesharp",
+  "tags": {
+    "language": "C#",
+    "platform": "Console"
+  },
+  "sourceName": "ConsoleSharp",
+  "defaultName": "ConsoleApp"
+}
