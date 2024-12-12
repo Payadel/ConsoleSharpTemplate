@@ -10,6 +10,11 @@
         <LangVersion>default</LangVersion>
     </PropertyGroup>
 
+    <PropertyGroup>
+        <PackAsTool>true</PackAsTool>
+        <ToolCommandName>my-app-name</ToolCommandName>
+    </PropertyGroup>
+
     <ItemGroup>
         <Content Include="..\.dockerignore">
             <Link>.dockerignore</Link>
