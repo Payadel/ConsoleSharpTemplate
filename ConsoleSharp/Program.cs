@@ -1,4 +1,4 @@
-﻿using System.IO.Abstractions;
+using System.IO.Abstractions;
 using ConsoleSharpTemplate;
 using ConsoleSharpTemplate.Data;
 using ConsoleSharpTemplate.Settings;
