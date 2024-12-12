@@ -2,6 +2,7 @@
 
 ConsoleSharpTemplate is a C# .NET 9 console application template that demonstrates a clean, modular, and scalable approach for creating CLI applications. This project integrates Docker, Entity Framework for database handling, configuration management, and command-line parsing using `System.CommandLine`. Additionally, it includes scripts for building, packaging, and publishing NuGet packages, as well as CI/CD workflows with GitHub Actions.
 
+
 ## Project Structure
 
 ```
@@ -19,7 +20,7 @@ ConsoleSharpTemplate is a C# .NET 9 console application template that demonstrat
 │   └── Settings
 │   │   ├── AppSettings.cs
 │   │   └── SecureConfigAttribute.cs
-├── ConsoleSharpTemplate.sln
+├── ConsoleSharp.sln
 ├── docker-compose.yml
 ├── Dockerfile
 ├── .dockerignore
@@ -64,6 +65,12 @@ To use and run this project, you'll need the following tools installed:
 - Git (for version control)
 
 ## Getting Started
+
+### Install with Nuget
+
+```
+dotnet new -i ConsoleSharp
+```
 
 ### Clone the Repository
 
